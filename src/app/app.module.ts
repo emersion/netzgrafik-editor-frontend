@@ -2,6 +2,7 @@ import {NgModule, Injector} from "@angular/core";
 import {NgxEditorModule} from "ngx-editor";
 import {BrowserModule} from "@angular/platform-browser";
 import {createCustomElement} from "@angular/elements";
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {OAuthModule} from "angular-oauth2-oidc";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -101,6 +102,10 @@ import {TrainRunSectionStopsComponentComponent} from "./streckengrafik/component
 import {PathGridComponent} from "./streckengrafik/components/grid/path-grid/path-grid.component";
 import {TrainRunNodeComponent} from "./streckengrafik/components/train-run-node/trainrun-node.component";
 import {ActionMenuComponent} from "./view/action-menu/action-menu/action-menu.component";
+
+/*class PathLocationStrategyWithoutHistoryState extends PathLocationStrategy {
+  override pushState(): void {}
+}*/
 
 @NgModule({
   declarations: [
@@ -235,6 +240,7 @@ import {ActionMenuComponent} from "./view/action-menu/action-menu/action-menu.co
   providers: [
     {provide: BASE_PATH, useValue: environment.backendUrl},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
+    //{provide: LocationStrategy, useClass: PathLocationStrategyWithoutHistoryState},
   ],
 })
 export class AppModule {

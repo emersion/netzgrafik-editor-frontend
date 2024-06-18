@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ViewEncapsulation, Input} from "@angular/core";
 import {AuthService} from "./services/auth/auth.service";
 import {environment} from "../environments/environment";
 import packageJson from "../../package.json";
@@ -9,6 +9,8 @@ import {ProjectDto} from "./api/generated";
   selector: "sbb-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
+  // TODO: doesn't work
+  //encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent {
   version = packageJson.version;
