@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {AuthService} from "./services/auth/auth.service";
 import {environment} from "../environments/environment";
 import packageJson from "../../package.json";
@@ -23,6 +23,14 @@ export class AppComponent {
 
   get email() {
     return this.authService.claims?.email;
+  }
+
+  @Input()
+  get foo() {
+    return { version: this.version };
+  }
+  set foo({ version }: { version: string }) {
+    this.version = version;
   }
 
   constructor(private authService: AuthService) {
